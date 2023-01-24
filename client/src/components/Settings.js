@@ -3,12 +3,11 @@ import { useTimer } from '../context/TimerContext';
 import ReactSlider from 'react-slider';
 
 import './slider.css';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  solid,
-  regular,
-  brands,
-} from '@fortawesome/fontawesome-svg-core/import.macro';
+import { faClock } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faClock);
 
 export default function Settings() {
   // setShowSettings is booelan
@@ -19,8 +18,6 @@ export default function Settings() {
     setWorkMinutes,
     breakMinutes,
     setBreakMinutes,
-    secondsLeft,
-    setSecondsLeft,
   } = useTimer();
 
   return (
@@ -50,7 +47,7 @@ export default function Settings() {
           className="btn btn-primary"
           onClick={() => setShowSettings(false)}
         >
-          <FontAwesomeIcon icon={solid('clock')} className="h-7" />{' '}
+          <FontAwesomeIcon icon="clock" className="h-7" />{' '}
         </button>
       </div>
     </div>

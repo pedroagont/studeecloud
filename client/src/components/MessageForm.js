@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { light } from '@fortawesome/fontawesome-svg-core/import.macro';
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faPaperPlane);
 
 /**
  * Creates MessageForm component as a child of the ChatPanel
@@ -21,14 +24,13 @@ export default function MessageForm({ getMessages, userName, roomName }) {
   // If no username is specified, 'NullUser' will be sent instead.
   const handleSubmit = () => {
     axios
-      .post('https://studeecloud-server.herokuapp.com/messages', {
+      .post('/messages', {
         message: message,
         userName: userName || 'NullUser',
         roomName: roomName,
       })
       .then((res) => {
-        console.log('LOGGING res data');
-        console.log(res);
+        // console.log(res);
         getMessages();
       })
       .catch((err) => {
@@ -62,10 +64,7 @@ export default function MessageForm({ getMessages, userName, roomName }) {
           className="w-24 p-2 border-2 font-body text-meringue border-dark-gray bg-teal rounded flex items-center justify-center"
           onClick={handleSubmit}
         >
-          <FontAwesomeIcon
-            icon={light('paper-plane-top')}
-            className="h-5 text-meringue"
-          />
+          <FontAwesomeIcon icon="paper-plane" className="h-5 text-meringue" />
         </button>
       </div>
     </form>

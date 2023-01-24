@@ -1,18 +1,17 @@
 import { useSound } from '../context/SoundContext';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  solid,
-  regular,
-  brands,
-} from '@fortawesome/fontawesome-svg-core/import.macro';
+import { faPlay, faPause } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faPlay, faPause);
 
 export default function PianoSound() {
   const { piano, setPiano, setSrc } = useSound();
 
   //Setsplaying state to true through HELPER FUNCTION in SoundContext.js
   const playSound = () => {
-    setSrc('https://studeecloud-server.herokuapp.com/public/Piano.mp3');
+    setSrc('http://localhost:8080/public/Piano.mp3');
     setPiano(true);
   };
 
@@ -28,11 +27,11 @@ export default function PianoSound() {
       <div>
         {piano ? (
           <button onClick={pauseSound} className="align-middle">
-            <FontAwesomeIcon icon={solid('circle-pause')} className="h-5" />
+            <FontAwesomeIcon icon="pause" className="h-5" />
           </button>
         ) : (
           <button onClick={playSound} className="align-middle">
-            <FontAwesomeIcon icon={solid('circle-play')} className="h-5" />
+            <FontAwesomeIcon icon="play" className="h-5" />
           </button>
         )}
       </div>

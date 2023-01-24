@@ -1,11 +1,10 @@
 import { useSound } from '../context/SoundContext';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  solid,
-  regular,
-  brands,
-} from '@fortawesome/fontawesome-svg-core/import.macro';
+import { faPlay, faPause } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faPlay, faPause);
 
 export default function RainSound() {
   const { rain, setRain, setSrc } = useSound();
@@ -13,7 +12,7 @@ export default function RainSound() {
   //Setsplaying state to true through HELPER FUNCTION in SoundContext.js
   const playSound = () => {
     setRain(true);
-    setSrc('https://studeecloud-server.herokuapp.com/Rain.mp3');
+    setSrc('http://localhost:8080/Rain.mp3');
   };
 
   const pauseSound = () => {
@@ -28,11 +27,11 @@ export default function RainSound() {
       <div>
         {rain ? (
           <button onClick={pauseSound} className="align-middle">
-            <FontAwesomeIcon icon={solid('circle-pause')} className="h-5" />
+            <FontAwesomeIcon icon="pause" className="h-5" />
           </button>
         ) : (
           <button onClick={playSound} className="align-middle">
-            <FontAwesomeIcon icon={solid('circle-play')} className="h-5" />
+            <FontAwesomeIcon icon="play" className="h-5" />
           </button>
         )}
       </div>

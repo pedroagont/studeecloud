@@ -4,14 +4,11 @@ import {
   CircularProgressbarWithChildren,
   buildStyles,
 } from 'react-circular-progressbar';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  solid,
-  regular,
-  brands,
-} from '@fortawesome/fontawesome-svg-core/import.macro';
+import { faPlay, faPause, faGear } from '@fortawesome/free-solid-svg-icons';
 
-import { useState, useEffect } from 'react';
+library.add(faPlay, faPause, faGear);
 
 export default function Timer() {
   const {
@@ -19,11 +16,8 @@ export default function Timer() {
     workMinutes,
     breakMinutes,
     secondsLeft,
-    setSecondsLeft,
     isPaused,
-    setIsPaused,
     mode,
-    setMode,
     togglePlay,
   } = useTimer();
 
@@ -61,15 +55,15 @@ export default function Timer() {
         <div className="mb-2">
           <button type="button" onClick={togglePlay}>
             {isPaused ? (
-              <FontAwesomeIcon icon={solid('circle-play')} className="h-7" />
+              <FontAwesomeIcon icon="play" className="h-7" />
             ) : (
-              <FontAwesomeIcon icon={solid('circle-pause')} className="h-7" />
+              <FontAwesomeIcon icon="pause" className="h-7" />
             )}
           </button>
         </div>
         <div>
           <button onClick={() => setShowSettings(true)}>
-            <FontAwesomeIcon icon={solid('gear')} className="h-7" />
+            <FontAwesomeIcon icon="gear" className="h-7" />
           </button>
         </div>
       </div>

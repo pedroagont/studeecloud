@@ -1,10 +1,26 @@
 import { useState, useEffect } from 'react';
 import { BigHead } from '@bigheads/core';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import {
-  createLocalVideoTrack,
-} from 'twilio-video';
+  faExpand,
+  faRectangleAd,
+  faVideo,
+  faMicrophone,
+  faVideoSlash,
+  faMicrophoneSlash,
+} from '@fortawesome/free-solid-svg-icons';
+
+import { createLocalVideoTrack } from 'twilio-video';
+
+library.add(
+  faExpand,
+  faRectangleAd,
+  faVideo,
+  faMicrophone,
+  faVideoSlash,
+  faMicrophoneSlash
+);
 
 export default function VideoPanel({ onSelect, twilioRoomObj, focused }) {
   // TODO -- Update this so the Big Heads aren't regenerated on each click to this panel
@@ -58,7 +74,7 @@ export default function VideoPanel({ onSelect, twilioRoomObj, focused }) {
           localMediaContainer.firstChild
         );
       }
-    });
+    }, []);
 
     // Iterate over remote participants in the room
     twilioRoomObj.participants.forEach((participant) => {
@@ -292,7 +308,7 @@ export default function VideoPanel({ onSelect, twilioRoomObj, focused }) {
         style={{ top: '3.5%', right: '2%' }}
         onClick={onSelect}
       >
-        <FontAwesomeIcon icon={solid('expand')} className="h-7" />
+        <FontAwesomeIcon icon="expand" className="h-7" />
       </button>
 
       <button
@@ -301,7 +317,7 @@ export default function VideoPanel({ onSelect, twilioRoomObj, focused }) {
         style={{ bottom: '3.5%', left: '2%' }}
         onClick={toggleShowVideos}
       >
-        <FontAwesomeIcon icon={solid('rectangle')} className="h-7" />
+        <FontAwesomeIcon icon="rectangle-ad" className="h-7" />
       </button>
 
       {!showVideos && (
@@ -330,7 +346,7 @@ export default function VideoPanel({ onSelect, twilioRoomObj, focused }) {
                   name="videoOff"
                   onClick={() => muteVideo(twilioRoomObj)}
                 >
-                  <FontAwesomeIcon icon={solid('video-slash')} />
+                  <FontAwesomeIcon icon="video-slash" />
                 </button>
 
                 <button
@@ -338,7 +354,7 @@ export default function VideoPanel({ onSelect, twilioRoomObj, focused }) {
                   name="videoOn"
                   onClick={() => enableVideo(twilioRoomObj)}
                 >
-                  <FontAwesomeIcon icon={solid('video')} />
+                  <FontAwesomeIcon icon="video" />
                 </button>
 
                 <button
@@ -346,7 +362,7 @@ export default function VideoPanel({ onSelect, twilioRoomObj, focused }) {
                   name="micOff"
                   onClick={() => muteAudio(twilioRoomObj)}
                 >
-                  <FontAwesomeIcon icon={solid('microphone-slash')} />
+                  <FontAwesomeIcon icon="microphone-slash" />
                 </button>
 
                 <button
@@ -354,7 +370,7 @@ export default function VideoPanel({ onSelect, twilioRoomObj, focused }) {
                   name="micOn"
                   onClick={() => enableAudio(twilioRoomObj)}
                 >
-                  <FontAwesomeIcon icon={solid('microphone')} />
+                  <FontAwesomeIcon icon="microphone" />
                 </button>
               </div>
 

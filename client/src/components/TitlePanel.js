@@ -1,5 +1,8 @@
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { light } from '@fortawesome/fontawesome-svg-core/import.macro';
+import { faClone } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faClone);
 
 export default function TitlePanel(props) {
   const {
@@ -34,7 +37,7 @@ export default function TitlePanel(props) {
             className="text-body text-teal text-xl border p-2 m-3 rounded"
             onClick={() => navigator.clipboard.writeText(joinRoomLink)}
           >
-            <FontAwesomeIcon icon={light('clone')} />
+            <FontAwesomeIcon icon="clone" />
           </button>
         </div>
 

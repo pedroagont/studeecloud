@@ -75,6 +75,7 @@ function TimerProvider({ children }) {
       setMode,
       togglePlay,
     }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [showSettings, workMinutes, breakMinutes, secondsLeft, isPaused, mode]
   );
 
